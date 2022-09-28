@@ -21,7 +21,7 @@ class PostDetailView(DetailView):
 
 class LatestEntriesFeed(Feed):
     title = "My Django Blog RSS"
-    link = "/posts/"
+    link = path()
     description = "RSS feed for My Django Blog"
 
     def items(self):
