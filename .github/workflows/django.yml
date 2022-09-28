@@ -29,5 +29,5 @@ jobs:
       run: |
           black --check blogging mysite polling
     - name: Run Tests
-        run: |
+      run: |
           python manage.py test
