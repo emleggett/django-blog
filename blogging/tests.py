@@ -54,7 +54,7 @@ class FrontEndTestCase(TestCase):
 
         resp = self.client.get("/")
         resp_text = resp.content.decode(resp.charset)
-        self.assertTrue("My Blog Posts" in resp_text)
+        self.assertTrue("My Cool Blog Posts" in resp_text)
 
         for count in range(1, 11):
 
