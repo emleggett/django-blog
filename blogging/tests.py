@@ -8,7 +8,7 @@ from pytz import utc
 
 class PostTestCase(TestCase):
 
-    fixtures = ['blogging_test_fixture.json']
+    fixtures = ["blogging_test_fixture.json"]
 
     def setUp(self):
         self.user = User.objects.get(pk=1)
@@ -22,7 +22,6 @@ class PostTestCase(TestCase):
 
 
 class CategoryTestCase(TestCase):
-
     def test_string_representation(self):
 
         expected = "A Category"
@@ -33,7 +32,7 @@ class CategoryTestCase(TestCase):
 
 class FrontEndTestCase(TestCase):
 
-    fixtures = ['blogging_test_fixture.json']
+    fixtures = ["blogging_test_fixture.json"]
 
     def setUp(self):
 
@@ -53,7 +52,7 @@ class FrontEndTestCase(TestCase):
 
     def test_list_only_published(self):
 
-        resp = self.client.get('/')
+        resp = self.client.get("/")
         resp_text = resp.content.decode(resp.charset)
         self.assertTrue("My Blog Posts" in resp_text)
 
@@ -70,7 +69,7 @@ class FrontEndTestCase(TestCase):
 
             title = f"Post {count} Title"
             post = Post.objects.get(title=title)
-            resp = self.client.get(f'/posts/{post.pk}/')
+            resp = self.client.get(f"/posts/{post.pk}/")
 
             if count < 6:
                 self.assertEqual(resp.status_code, 200)
