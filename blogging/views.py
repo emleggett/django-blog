@@ -28,10 +28,10 @@ class LatestEntriesFeed(Feed):
         return Post.objects.order_by("-published_date")[:5]
 
     def item_title(self, item):
-        return Post.title
+        return item.title
 
     def item_description(self, item):
-        return Post.text
+        return item.text
 
     def item_link(self, item):
-        return path("posts/<int:pk>/", PostDetailView.as_view(), name="blog_detail")
+        return item.path("posts/<int:pk>/", PostDetailView.as_view(), name="blog_detail")
