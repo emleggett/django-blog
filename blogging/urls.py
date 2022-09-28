@@ -1,5 +1,5 @@
 from django.urls import path
-from mysite.blogging.views import PostListView, PostDetailView, LatestEntriesFeed
+from blogging.views import PostListView, PostDetailView, LatestEntriesFeed
 
 
 urlpatterns = [
