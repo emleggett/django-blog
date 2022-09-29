@@ -20,7 +20,7 @@ class PostDetailView(DetailView):
     template_name = "blogging/detail.html"
 
 
-class LatestEntriesFeed(Feed):
+class PostFeed(Feed):
     title = "My Django Blog RSS Feed"
     description = "RSS feed for My Django Blog"
 
@@ -34,4 +34,4 @@ class LatestEntriesFeed(Feed):
         return item.text
 
     def item_link(self, item):
-        return "https://glacial-ocean-49944.herokuapp.com/posts/" + str(item.pk)
+        return item.get_absolute_url()
