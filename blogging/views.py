@@ -34,4 +34,4 @@ class PostFeed(Feed):
         return post.text
 
     def item_link(self, post):
-        return reverse(viewname="blog_detail", args=post.pk)
+        return reverse("blog_detail", args=[post.pk])
