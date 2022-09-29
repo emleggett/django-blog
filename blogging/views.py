@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import reverse
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.syndication.views import Feed
@@ -19,6 +19,7 @@ class PostDetailView(DetailView):
 
 class PostFeed(Feed):
     title = "My Django Blog RSS Feed"
+    link = "/feed/"
     description = "RSS feed for My Django Blog"
 
     def items(self):
@@ -26,11 +27,11 @@ class PostFeed(Feed):
             "-published_date"
         )[:5]
 
-    def item_title(self, item):
-        return item.title
+    def item_title(self, post):
+        return post.title
 
-    def item_description(self, item):
-        return item.text
+    def item_description(self, post):
+        return post.text
 
-    def item_link(self, item):
-        return path("posts/<int:pk>/", PostDetailView.as_view(), name="blog_detail")
+    def item_link(self, post):
+        return reverse(viewname="blog_detail", args=post.pk)
