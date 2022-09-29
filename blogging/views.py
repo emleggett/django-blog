@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.urls import path
+from django.urls import reverse
 from django.contrib.syndication.views import Feed
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -21,7 +22,6 @@ class PostDetailView(DetailView):
 
 class LatestEntriesFeed(Feed):
     title = "My Django Blog RSS Feed"
-    link = "/feed/"
     description = "RSS feed for My Django Blog"
 
     def items(self):
@@ -34,4 +34,4 @@ class LatestEntriesFeed(Feed):
         return item.text
 
     def item_link(self, item):
-        return path("posts/<int:pk>/", PostDetailView.as_view(), name="blog_detail")
+        return reverse("posts", args=[item.pk])
