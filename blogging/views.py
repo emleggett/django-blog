@@ -33,6 +33,4 @@ class PostFeed(Feed):
         return item.text
 
     def item_link(self, item):
-        return str(
-            path("posts/<int:pk>/", PostDetailView.as_view(), name="blog_detail")
-        )
+        return path("posts/<int:pk>/", PostDetailView.as_view(), name="blog_detail")
