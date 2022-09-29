@@ -20,18 +20,18 @@ class PostDetailView(DetailView):
 
 
 class LatestEntriesFeed(Feed):
-    title = "My Django Blog RSS"
-    link = "/posts/"
+    title = "My Django Blog RSS Feed"
+    link = "/feed/"
     description = "RSS feed for My Django Blog"
 
     def items(self):
         return Post.objects.order_by("-published_date")[:5]
 
     def item_title(self, item):
-        return Post.title
+        return item.title
 
     def item_description(self, item):
-        return Post.text
+        return item.text
 
     def item_link(self, item):
-        return path("posts/<int:pk>/")
+        return "posts/" + item.pk
