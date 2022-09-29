@@ -34,4 +34,4 @@ class LatestEntriesFeed(Feed):
         return item.text
 
     def item_link(self, item):
-        return reverse("posts", args=[item.pk])
+        return "https://glacial-ocean-49944.herokuapp.com/posts/" + str(item.pk)
