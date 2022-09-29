@@ -22,7 +22,9 @@ class PostFeed(Feed):
     description = "RSS feed for My Django Blog"
 
     def items(self):
-        return Post.objects.exclude(published_date__exact=None).order_by("-published_date")[:5]
+        return Post.objects.exclude(published_date__exact=None).order_by(
+            "-published_date"
+        )[:5]
 
     def item_title(self, item):
         return item.title
@@ -31,4 +33,6 @@ class PostFeed(Feed):
         return item.text
 
     def item_link(self, item):
-        return str(path("posts/<int:pk>/", PostDetailView.as_view(), name="blog_detail"))
+        return str(
+            path("posts/<int:pk>/", PostDetailView.as_view(), name="blog_detail")
+        )
