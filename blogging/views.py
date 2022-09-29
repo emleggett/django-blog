@@ -34,4 +34,4 @@ class LatestEntriesFeed(Feed):
         return item.text
 
     def item_link(self, item):
-        return path("posts/<int:pk>/", PostDetailView.as_view(), name="blog_detail")
+        return "posts/" + str(item.primary_key) + "/"
