@@ -19,7 +19,7 @@ class PostDetailView(DetailView):
 
 class PostFeed(Feed):
     title = "My Django Blog RSS Feed"
-    link = "/feed/"
+    link = "/posts/"
     description = "RSS feed for My Django Blog"
 
     def items(self):
