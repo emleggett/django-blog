@@ -34,4 +34,4 @@ class PostFeed(Feed):
         return item.text
 
     def item_link(self, item):
-        return item.get_absolute_url()
+        return reverse("posts", args=[item.pk])
